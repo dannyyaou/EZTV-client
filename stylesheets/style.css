@@ -118,3 +118,8 @@ body {
 .listActive {
   display: block;
 }
+
+/* line 98, ../sass/style.scss */
+.showListContainer {
+  float: left;
+}

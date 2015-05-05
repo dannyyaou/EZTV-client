@@ -9,8 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body ng-app='EZTV' ng-controller='first_controller' ng-init="init()">
-	<div class="showListContainer" ng-repeat = "show in showList"  ng-show="!video">
-		<button ng-click="showEpisodeList(show.showName)">{{show.showName}}</button>
+	<div class="showListContainer"  ng-show="!video">
+		<button ng-repeat = "show in showList" ng-click="showEpisodeList(show.showName)">{{show.showName}}</button>
 	</div>
 	<div ng-repeat = "show in showList" ng-show="!video">
 		<div class="episodeList {{show.showName}}_episodes {{show.showName}}">
@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div style="width:100%" ng-show='video'>
-		<a href="#" class="close" ng-click="videoClose()">close</a>
+		<a href="#" class="close" ng-click="videoClose()">點我回到前頁/a>
 		<div class="playerSide_inside"></div>
 	</div>
 </body>
