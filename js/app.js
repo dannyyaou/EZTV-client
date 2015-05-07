@@ -5,18 +5,31 @@ EZTV.controller('first_controller', function ($scope){
     var showList = {};
     $.ajax({
       async: false,
-      url:'http://192.168.2.7:8080/showList',
+      url:'http://localhost:8080/allshowlist',
       type: 'GET',
       dataType: 'json',
       success: function(data) {
-        showList = data;
+        showsList = data;
       }
     });
-    return showList;
+    return showsList;
   };
-  $scope.showList = $scope.getShowList();
+  $scope.getEpisodeList = function(href){
+    var episodeList = {};
+    $.ajax({
+      async: false,
+      url:'http://localhost:8080/showlist?url='+href,
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        episodeList = data;
+      }
+    });
+    return episodeList;
+  };
+  $scope.showsList = $scope.getShowList();
   $scope.init = function(){
-  	console.log($scope.showList);
+  	console.log($scope.showsList);
     $scope.video = false;
   };
   $scope.showEpisode = function(){
@@ -25,14 +38,43 @@ EZTV.controller('first_controller', function ($scope){
   $scope.showVideo = function(url){
     $scope.video = true;
     $('.playerSide_inside')
-      .append("<iframe class='videoEmbed' src='http://192.168.2.7:8080/videodiv?url="+url+"'></iframe>");
+      .append("<iframe class='videoEmbed' src='http://localhost:8080/videodiv?url="+url+"'></iframe>");
   };
   $scope.videoClose = function(){
     $('.playerSide_inside').empty();
     $scope.video = false;
   };
-  $scope.showEpisodeList = function(x){
-    $('.listActive').removeClass('listActive');
-    $('.'+x).addClass('listActive');
+  $scope.showEpisodes = [];
+  $scope.showEpisodeList = function(href){
+    console.log(href);
+    $scope.showEpisodes = [];
+    $scope.showEpisodes = $scope.getEpisodeList(href);
+    console.log($scope.showEpisodes);
+  };
+  $scope.changeSearch = function(stuff){
+    $scope.search = stuff;
   };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

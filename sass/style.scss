@@ -46,23 +46,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a {
-	color: darkblue;
-}
 
 /*myCode*/
 body{
-	background-color: #808080;
+	background-color: rgba(0,0,0,.2);
 }
 
 .showListContainer {
 	z-index: 10;
 	margin-top: 50px;
-	width: 50%;
+	width: 80%;
 	margin: 0;
 	display: inline;
 	button{
-		width: 25%;
+		width: 20%;
 		height: 80px;
 		font-size: 1.1em;
 		color: black;
@@ -81,7 +78,12 @@ body{
 	background-color: white;
 	line-height: 20px;
 	padding-left: 5%;
-	display: none;
+	position: fixed;
+	top: 10vh;
+	right: 10px;
+	height: 88vh;
+	width: 35%;
+	padding: 5px;
 }
 .playerSide{
 	width: 640px;
@@ -98,7 +100,38 @@ body{
 .showListContainer{
 	float: left;
 }
-
-
-
+.mainnav{
+	border: 0;
+	background-color: #68B063;
+	color: white;
+	.navbar-brand{
+		color: white;
+	}
+}
+.videoDiv{
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	a{
+		color: white;
+		opacity: 1;
+		font-weight: 500;
+		text-shadow: 0 0 0 #fff;
+	}
+	a:hover{
+		color: white;
+		opacity: 1;
+		font-weight: 500;
+		text-shadow: 0 0 0 #fff;
+	}
+}
+button.selectBtn {
+  color: white;
+  line-height: 25px;
+  margin: 0 10px;
+  border: 1px solid rgba(255,255,255,.5);
+}
 

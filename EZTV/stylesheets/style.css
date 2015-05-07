@@ -59,23 +59,28 @@ table {
   border-spacing: 0;
 }
 
-/*myCode*/
-/* line 51, ../sass/style.scss */
-body {
-  background-color: rgba(0, 0, 0, 0.2);
+/* line 49, ../sass/style.scss */
+a {
+  color: darkblue;
 }
 
-/* line 55, ../sass/style.scss */
+/*myCode*/
+/* line 54, ../sass/style.scss */
+body {
+  background-color: #808080;
+}
+
+/* line 58, ../sass/style.scss */
 .showListContainer {
   z-index: 10;
   margin-top: 50px;
-  width: 80%;
+  width: 50%;
   margin: 0;
   display: inline;
 }
-/* line 61, ../sass/style.scss */
+/* line 64, ../sass/style.scss */
 .showListContainer button {
-  width: 20%;
+  width: 25%;
   height: 80px;
   font-size: 1.1em;
   color: black;
@@ -87,82 +92,34 @@ body {
   box-shadow: 0px 5px 5px 0px rgba(22, 22, 22, 0.3);
 }
 
-/* line 75, ../sass/style.scss */
+/* line 78, ../sass/style.scss */
 .episodeList {
   overflow: scroll;
   border: 1px solid black;
   background-color: white;
   line-height: 20px;
   padding-left: 5%;
-  position: fixed;
-  top: 10vh;
-  right: 10px;
-  height: 88vh;
-  width: 35%;
-  padding: 5px;
+  display: none;
 }
 
-/* line 88, ../sass/style.scss */
+/* line 86, ../sass/style.scss */
 .playerSide {
   width: 640px;
   height: 100vh;
 }
 
-/* line 92, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
 .videoEmbed {
   width: 100%;
   height: 90vh;
 }
 
-/* line 96, ../sass/style.scss */
+/* line 94, ../sass/style.scss */
 .listActive {
   display: block;
 }
 
-/* line 100, ../sass/style.scss */
+/* line 98, ../sass/style.scss */
 .showListContainer {
   float: left;
-}
-
-/* line 103, ../sass/style.scss */
-.mainnav {
-  border: 0;
-  background-color: #68B063;
-  color: white;
-}
-/* line 107, ../sass/style.scss */
-.mainnav .navbar-brand {
-  color: white;
-}
-
-/* line 111, ../sass/style.scss */
-.videoDiv {
-  background-color: black;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-/* line 118, ../sass/style.scss */
-.videoDiv a {
-  color: white;
-  opacity: 1;
-  font-weight: 500;
-  text-shadow: 0 0 0 #fff;
-}
-/* line 124, ../sass/style.scss */
-.videoDiv a:hover {
-  color: white;
-  opacity: 1;
-  font-weight: 500;
-  text-shadow: 0 0 0 #fff;
-}
-
-/* line 131, ../sass/style.scss */
-button.selectBtn {
-  color: white;
-  line-height: 25px;
-  margin: 0 10px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
 }

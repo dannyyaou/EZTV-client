@@ -5,21 +5,146 @@
 	<meta charset='utf-8'>
 	<script type="text/javascript" src='js/angular-1.3.15.min.js'></script>
 	<script type="text/javascript" src='js/jquery-2.1.3.min.js'></script>
+  <script type="text/javascript" src='js/jquery-ui.min.js'></script>
 	<script type="text/javascript" src='js/app.js'></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.min.css.css">
+
 </head>
 <body ng-app='EZTV' ng-controller='first_controller' ng-init="init()">
+	<nav class="navbar navbar-default mainnav" >
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">EZTV</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search" ng-model="search">
+	        </div>
+          <button class="selectBtn" style="background:red" ng-click="changeSearch('韓國綜藝')">韓國綜藝</button>
+          <button class="selectBtn" style="background:green" ng-click="changeSearch('華語綜藝')">華語綜藝</button>
+          <button class="selectBtn" style="background:blue" ng-click="changeSearch('韓劇')">韓劇</button>
+          <button class="selectBtn" style="background:orange" ng-click="changeSearch('日劇')">日劇</button>
+          <button class="selectBtn" style="background:purple" ng-click="changeSearch('華劇')">華劇</button>
+        </form>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li>
+	        	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+						</fb:login-button>
+					</li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
 	<div class="showListContainer"  ng-show="!video">
-		<button ng-repeat = "show in showList" ng-click="showEpisodeList(show.showName)">{{show.showName}}</button>
+    <span ng-repeat = "show in showsList">
+		  <button  ng-click = "showEpisodeList(item.href)" ng-repeat = "item in show.showslist | filter:search">{{show.showsName}}：{{item.title}}</button>
+    </span>
 	</div>
-	<div ng-repeat = "show in showList" ng-show="!video">
-		<div class="episodeList {{show.showName}}_episodes {{show.showName}}">
-			<a class="episode" ng-repeat="episode in show.showEpisodes" href="#" ng-click="showVideo(episode.href)" videohref="{{episode.href}}">{{episode.title}}<br></a>
-		</div>
+	<div class="episodeList">
+		<a class="episode" ng-repeat="episode in showEpisodes" href="#" ng-click="showVideo(episode.href)" videohref="{{episode.href}}">{{episode.title}}<br></a>
 	</div>
-	<div style="width:100%" ng-show='video'>
-		<a href="#" class="close" ng-click="videoClose()">點我回到前頁/a>
+	<div style="width:100%" ng-show='video' class="videoDiv">
+		<a href="#" class="close" ng-click="videoClose()">點我回到前頁</a>
 		<div class="playerSide_inside"></div>
 	</div>
+
+
+
+
+
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '491424534340285',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+<div id="status"></div>
 </body>
 </html>
