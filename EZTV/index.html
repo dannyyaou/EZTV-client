@@ -6,20 +6,72 @@
 	<script type="text/javascript" src='js/angular-1.3.15.min.js'></script>
 	<script type="text/javascript" src='js/jquery-2.1.3.min.js'></script>
 	<script type="text/javascript" src='js/app.js'></script>
+  <script type="text/javascript" src='js/loading-bar.js'></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/loading.css">
+
 </head>
-<body ng-app='EZTV' ng-controller='first_controller' ng-init="init()">
-	<div class="showListContainer"  ng-show="!video">
-		<button ng-repeat = "show in showList" ng-click="showEpisodeList(show.showName)">{{show.showName}}</button>
+<body ng-app='EZTV' ng-controller='first_controller'>
+	<nav class="navbar navbar-default mainnav" >
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">EZTV</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search" ng-model="search">
+	        </div>
+	        <button class="selectBtn" ng-click="changeSearch('')" style="color:black;border:1px solid white">所有影音</button>
+          <button class="selectBtn krfb" ng-click="changeSearch('韓國綜藝')" >韓國綜藝</button>
+          <button class="selectBtn chfb" ng-click="changeSearch('華語綜藝')" >華語綜藝</button>
+          <button class="selectBtn krdb" ng-click="changeSearch('韓劇')"  >韓劇</button>
+          <button class="selectBtn jpdb" ng-click="changeSearch('日劇')" >日劇</button>
+          <button class="selectBtn chdb" ng-click="changeSearch('華劇')" >華劇</button>
+          <a ng-click = "changeSearch('liked')">我的收藏<img src="images/liked.png" style="max-height:20px"></a>
+        </form>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li>
+	        	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+						</fb:login-button>
+					</li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="showListContainer">
+    <span ng-repeat = "show in showsList">
+    	<div class="btncontainer"  ng-repeat = "item in show.showslist | filter:search" style="position:relative">
+	    	<div class="heartDiv"><img src="images/{{item.like}}.png" class="heart" ng-class = "item.showid.split('.')[0]" ng-click="like(item.showid.split('.')[0])"></div>
+			  <button  ng-click = "showEpisodeList(item.href)" class="button" ng-class='show.showsName'>{{show.showsName}}：{{item.title}}</button>
+		  </div>
+
+    </span>
 	</div>
-	<div ng-repeat = "show in showList" ng-show="!video">
-		<div class="episodeList {{show.showName}}_episodes {{show.showName}}">
-			<a class="episode" ng-repeat="episode in show.showEpisodes" href="#" ng-click="showVideo(episode.href)" videohref="{{episode.href}}">{{episode.title}}<br></a>
-		</div>
+	<div class="episodeList" ng-show="episodeListShow" ng-init="init()">
+    <div class="episodeList_white">
+      <h1>{{showEpisodes.title}}</h1>
+      <button class="closeBtn" ng-click="closeBtn1()">X</button>
+      <div class="episodeList_white_des"><p>{{showEpisodes.des}}</p></div>
+      <h2>節目列表<h2><br>
+		  <div class="episodeList_white_a"><a class="episode" ng-repeat="episode in showEpisodes.showList" href="#" ng-click="showVideo(episode.href)" videohref="{{episode.href}}">{{episode.title}}</a></div>
+    </div>
+    <div style="width:80%" ng-show='video' class="videoDiv">
+      <a href="#" class="close" ng-click="videoClose()">點我回到前頁</a>
+      <div class="playerSide_inside"></div>
+    </div>
 	</div>
-	<div style="width:100%" ng-show='video'>
-		<a href="#" class="close" ng-click="videoClose()">點我回到前頁</a>
-		<div class="playerSide_inside"></div>
-	</div>
+
+
+<div id="loading"><img src="images/31.gif"></div>
 </body>
 </html>

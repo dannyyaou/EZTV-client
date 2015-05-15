@@ -2,6 +2,12 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+/*define*/
+$krfColor: rgb(42, 127, 184);
+$jpdColor: #68B063;
+$chdColor: #1abc9c;
+$chfColor: #e74c3c;
+$krdColor: #ff7f00;
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -48,42 +54,92 @@ table {
 }
 
 /*myCode*/
-body{
+/*body{
 	background-color: rgba(0,0,0,.2);
-}
+}*/
 
 .showListContainer {
 	z-index: 10;
 	margin-top: 50px;
-	width: 80%;
+	width: 100%;
 	margin: 0;
 	display: inline;
 	button{
-		width: 20%;
+		width: 80%;
 		height: 80px;
-		font-size: 1.1em;
-		color: black;
-		background-color: rgb(243,243,243);
+		font-size: 1em;
+		color: white;
+		background-color: $krdColor;
 		margin: 2em;
 		border: 0;
 		-webkit-box-shadow: 0px 5px 5px 0px rgba(22, 22, 22, 0.3);
 		-moz-box-shadow:    0px 5px 5px 0px rgba(22, 22, 22, 0.3);
 		box-shadow:         0px 5px 5px 0px rgba(22, 22, 22, 0.3);
+		position: relative;
+		padding-left: 50px;
+		border-radius: 10px;
+		span {
+		  position: absolute;
+		  left: 0;
+		  width: 50px;
+		  background-color:rgba(0,0,0,0.5);
+		  -webkit-border-top-left-radius: 5px;
+			-webkit-border-bottom-left-radius: 5px;
+			-moz-border-radius-topleft: 5px;
+			-moz-border-radius-bottomleft: 5px;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			border-right: 1px solid  rgba(0,0,0,0.15);
+			height: 100%;
+  		top: 0;
+  		line-height: 80px;
+  		.heart{
+  			width: 55%;
+				margin-top: 26px;
+  		}
+		}
 	}
 }
 
 .episodeList{
-	overflow: scroll;
-	border: 1px solid black;
-	background-color: white;
-	line-height: 20px;
-	padding-left: 5%;
+	z-index: 5;
 	position: fixed;
-	top: 10vh;
-	right: 10px;
-	height: 88vh;
-	width: 35%;
+	left: 0;
+	bottom: 0;
+	height: 100vh;
+	width: 100%;
 	padding: 5px;
+	background-color: rgba(0,0,0,.8);
+	&_white{
+		width: 80%;
+		height: 80%;
+		background-color: white;
+		margin-left: 10%;
+  	margin-top: 10vh;
+  	overflow: scroll;
+  	text-align: center;
+  	padding: 20px;
+  	h1{
+  		font-size: 2em;
+		  margin-bottom: 10px;
+  	}
+  	&_des{
+  		text-align: left;
+  		line-height: 1.2;
+  	}
+  	&_a{
+  		text-align: left;
+  		margin-top: 30px;
+  		a{
+  			display: inline-block;
+			  margin: 3px 10px;
+			  background: rgb(67, 178, 123);
+			  color: white;
+			  padding: 5px;
+			  min-width: 30%;
+  		}
+  	}
+	}
 }
 .playerSide{
 	width: 640px;
@@ -102,19 +158,20 @@ body{
 }
 .mainnav{
 	border: 0;
-	background-color: #68B063;
-	color: white;
+	background-color: #B0CAB9;
+	color: rgba(0,0,0,.8);
 	.navbar-brand{
-		color: white;
+		color: rgba(0,0,0,.8);
 	}
 }
 .videoDiv{
+	z-index: 10;
 	background-color: black;
-	width: 100%;
-	height: 100%;
+	width: 80%;
+	height: 80%;
 	position: fixed;
-	top: 0;
-	left: 0;
+	top: 10%;
+	left: 10%;
 	a{
 		color: white;
 		opacity: 1;
@@ -132,6 +189,69 @@ button.selectBtn {
   color: white;
   line-height: 25px;
   margin: 0 10px;
-  border: 1px solid rgba(255,255,255,.5);
+  border: 0;
+}
+button.韓國綜藝, .krfb{
+	background-color: $krfColor;
+}
+button.華語綜藝, .chfb{
+	background-color: $chfColor;
+}
+button.華劇, .chdb{
+	background-color: $chdColor;
+}
+button.日劇, .jpdb{
+	background-color: $jpdColor;
+}
+button.韓劇, .krdb{
+	background-color: $krdColor;
+}
+h1.loading {
+  position: absolute;
+  top: 70px;
+  font-size: 1000%;
+  color: yellow;
+  left: 25%;
 }
 
+.closeBtn{
+	position: absolute;
+  right: 9%;
+  top: 9%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0;
+  background: rgb(208, 76, 76);
+  color: white;
+}
+#loading{
+	width: 100%;
+	height: 2000px;
+	background-color: rgba(0,0,0,.7);
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.btncontainer{
+	float: left;
+	width: 33%;
+	.heartDiv {
+	  position: absolute;
+	  height: 50px;
+	  top: 33px;
+	  left: 33px;
+	  z-index: 2;
+	  background: rgba(0,0,0,.5);
+	  width: 50px;
+	  text-align: center;
+	  height: 79px;
+	  line-height: 104px;
+	  border-radius: 10px;
+	  .heart{
+	  	max-height: 35px;
+	  }
+	}
+}

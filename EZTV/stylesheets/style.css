@@ -1,8 +1,10 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-/* line 6, ../sass/style.scss */
+/*define*/
+/* line 12, ../sass/style.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,101 +27,283 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-/* line 27, ../sass/style.scss */
+/* line 33, ../sass/style.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 31, ../sass/style.scss */
+/* line 37, ../sass/style.scss */
 body {
   line-height: 1;
 }
 
-/* line 34, ../sass/style.scss */
+/* line 40, ../sass/style.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 37, ../sass/style.scss */
+/* line 43, ../sass/style.scss */
 blockquote, q {
   quotes: none;
 }
 
-/* line 40, ../sass/style.scss */
+/* line 46, ../sass/style.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
 
-/* line 45, ../sass/style.scss */
+/* line 51, ../sass/style.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 49, ../sass/style.scss */
-a {
-  color: darkblue;
-}
-
 /*myCode*/
-/* line 54, ../sass/style.scss */
-body {
-  background-color: #808080;
-}
-
-/* line 58, ../sass/style.scss */
+/*body{
+	background-color: rgba(0,0,0,.2);
+}*/
+/* line 61, ../sass/style.scss */
 .showListContainer {
   z-index: 10;
   margin-top: 50px;
-  width: 50%;
+  width: 100%;
   margin: 0;
   display: inline;
 }
-/* line 64, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 .showListContainer button {
-  width: 25%;
+  width: 80%;
   height: 80px;
-  font-size: 1.1em;
-  color: black;
-  background-color: #f3f3f3;
+  font-size: 1em;
+  color: white;
+  background-color: #ff7f00;
   margin: 2em;
   border: 0;
   -webkit-box-shadow: 0px 5px 5px 0px rgba(22, 22, 22, 0.3);
   -moz-box-shadow: 0px 5px 5px 0px rgba(22, 22, 22, 0.3);
   box-shadow: 0px 5px 5px 0px rgba(22, 22, 22, 0.3);
+  position: relative;
+  padding-left: 50px;
+  border-radius: 10px;
+}
+/* line 81, ../sass/style.scss */
+.showListContainer button span {
+  position: absolute;
+  left: 0;
+  width: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  height: 100%;
+  top: 0;
+  line-height: 80px;
+}
+/* line 96, ../sass/style.scss */
+.showListContainer button span .heart {
+  width: 55%;
+  margin-top: 26px;
 }
 
-/* line 78, ../sass/style.scss */
+/* line 104, ../sass/style.scss */
 .episodeList {
-  overflow: scroll;
-  border: 1px solid black;
+  z-index: 5;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* line 113, ../sass/style.scss */
+.episodeList_white {
+  width: 80%;
+  height: 80%;
   background-color: white;
-  line-height: 20px;
-  padding-left: 5%;
-  display: none;
+  margin-left: 10%;
+  margin-top: 10vh;
+  overflow: scroll;
+  text-align: center;
+  padding: 20px;
+}
+/* line 122, ../sass/style.scss */
+.episodeList_white h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+/* line 126, ../sass/style.scss */
+.episodeList_white_des {
+  text-align: left;
+  line-height: 1.2;
+}
+/* line 130, ../sass/style.scss */
+.episodeList_white_a {
+  text-align: left;
+  margin-top: 30px;
+}
+/* line 133, ../sass/style.scss */
+.episodeList_white_a a {
+  display: inline-block;
+  margin: 3px 10px;
+  background: #43b27b;
+  color: white;
+  padding: 5px;
+  min-width: 30%;
 }
 
-/* line 86, ../sass/style.scss */
+/* line 144, ../sass/style.scss */
 .playerSide {
   width: 640px;
   height: 100vh;
 }
 
-/* line 90, ../sass/style.scss */
+/* line 148, ../sass/style.scss */
 .videoEmbed {
   width: 100%;
   height: 90vh;
 }
 
-/* line 94, ../sass/style.scss */
+/* line 152, ../sass/style.scss */
 .listActive {
   display: block;
 }
 
-/* line 98, ../sass/style.scss */
+/* line 156, ../sass/style.scss */
 .showListContainer {
   float: left;
+}
+
+/* line 159, ../sass/style.scss */
+.mainnav {
+  border: 0;
+  background-color: #B0CAB9;
+  color: rgba(0, 0, 0, 0.8);
+}
+/* line 163, ../sass/style.scss */
+.mainnav .navbar-brand {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* line 167, ../sass/style.scss */
+.videoDiv {
+  z-index: 10;
+  background-color: black;
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+}
+/* line 175, ../sass/style.scss */
+.videoDiv a {
+  color: white;
+  opacity: 1;
+  font-weight: 500;
+  text-shadow: 0 0 0 #fff;
+}
+/* line 181, ../sass/style.scss */
+.videoDiv a:hover {
+  color: white;
+  opacity: 1;
+  font-weight: 500;
+  text-shadow: 0 0 0 #fff;
+}
+
+/* line 188, ../sass/style.scss */
+button.selectBtn {
+  color: white;
+  line-height: 25px;
+  margin: 0 10px;
+  border: 0;
+}
+
+/* line 194, ../sass/style.scss */
+button.韓國綜藝, .krfb {
+  background-color: #2a7fb8;
+}
+
+/* line 197, ../sass/style.scss */
+button.華語綜藝, .chfb {
+  background-color: #e74c3c;
+}
+
+/* line 200, ../sass/style.scss */
+button.華劇, .chdb {
+  background-color: #1abc9c;
+}
+
+/* line 203, ../sass/style.scss */
+button.日劇, .jpdb {
+  background-color: #68B063;
+}
+
+/* line 206, ../sass/style.scss */
+button.韓劇, .krdb {
+  background-color: #ff7f00;
+}
+
+/* line 209, ../sass/style.scss */
+h1.loading {
+  position: absolute;
+  top: 70px;
+  font-size: 1000%;
+  color: yellow;
+  left: 25%;
+}
+
+/* line 217, ../sass/style.scss */
+.closeBtn {
+  position: absolute;
+  right: 9%;
+  top: 9%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0;
+  background: #d04c4c;
+  color: white;
+}
+
+/* line 228, ../sass/style.scss */
+#loading {
+  width: 100%;
+  height: 2000px;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+/* line 238, ../sass/style.scss */
+.btncontainer {
+  float: left;
+  width: 33%;
+}
+/* line 241, ../sass/style.scss */
+.btncontainer .heartDiv {
+  position: absolute;
+  height: 50px;
+  top: 33px;
+  left: 33px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  text-align: center;
+  height: 79px;
+  line-height: 104px;
+  border-radius: 10px;
+}
+/* line 253, ../sass/style.scss */
+.btncontainer .heartDiv .heart {
+  max-height: 35px;
 }
