@@ -15,13 +15,6 @@ search的部分，我把.search這個input，用ng-model綁著$scope.search這�
 點開某電視節目後，會顯示該電視節目的介紹與各個級數
 而這一個overlay的做法是：
 
-<div class="episodeList_white">
-<h1>{{showEpisodes.title}}</h1>
-<button class="closeBtn" ng-click="closeBtn1()">X</button>
-<div class="episodeList_white_des"><p>{{showEpisodes.des}}</p></div>
-<h2>節目列表<h2><br>
-<div class="episodeList_white_a"><a class="episode" ng-repeat="episode in showEpisodes.showList" href="#" ng-click="showVideo(episode.href)" videohref="{{episode.href}}">{{episode.title}}</a></div>
-</div>
 
 $scope.showEpisodes這個變數，我會依照選取的電視節目來變動裡面的內容，因此只需一個div就可以處理所有電視劇的內容顯示了。
 在點擊顯示上，我使用了ng-click以及ng-show來實現。
